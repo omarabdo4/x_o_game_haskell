@@ -61,11 +61,14 @@ boardGrid =
                               ]
                        ])
       [0.0 .. fromIntegral n]
+showGameOverText :: Picture
+showGameOverText = Translate (fromIntegral screenWidth / 2.5) (fromIntegral screenHeight / 2) $ Scale 0.3 0.3 $ Text "Game Over"
 
 boardAsPicture board =
     pictures [ xCellsOfBoard board
              , oCellsOfBoard board
              , boardGrid
+             , showGameOverText
              ]
 
 boardAsGameOverPicture winner board = color (outcomeColor winner) (boardAsPicture board)
