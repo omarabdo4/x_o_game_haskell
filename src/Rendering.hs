@@ -7,9 +7,9 @@ import Graphics.Gloss
 import Game
 
 boardGridColor = makeColorI 0 0 0 255
-playerXColor = makeColorI 255 50 50 255
-playerOColor = makeColorI 50 100 255 255
-tieColor = greyN 0.5
+playerXColor = makeColorI 211 123 40 255
+playerOColor = makeColorI 40 185 211 255
+tieColor = makeColorI 211 74 40 255
 
 boardAsRunningPicture board =
     pictures [ color playerXColor $ xCellsOfBoard board
