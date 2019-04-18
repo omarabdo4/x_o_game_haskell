@@ -6,6 +6,8 @@ import Data.Foldable ( asum )
 import Game
 import Graphics.Gloss.Interface.Pure.Game
 
+-- & is used instead of parentheses ( )
+ 
 isCoordCorrect = inRange ((0, 0), (n - 1, n - 1))
 
 switchPlayer game =

@@ -25,14 +25,16 @@ snapPictureToCell picture (row, column) = translate x y picture
     where x = fromIntegral column * cellWidth + cellWidth * 0.5
           y = fromIntegral row * cellHeight + cellHeight * 0.5
 
+-- Draw X Shape
 xCell :: Picture
-xCell = pictures [ rotate 45.0 $ rectangleSolid side 10.0
-                 , rotate (-45.0) $ rectangleSolid side 10.0
+xCell = pictures [ rotate 45.0 $ rectangleWire side 12.0
+                 , rotate (-45.0) $ rectangleWire side 12.0
                  ]
     where side = min cellWidth cellHeight * 0.75
 
+-- Draw O Shape
 oCell :: Picture
-oCell = thickCircle radius 10.0
+oCell = thickCircle radius 12.0
     where radius = min cellWidth cellHeight * 0.25
 
 cellsOfBoard :: Board -> Cell -> Picture -> Picture
@@ -73,5 +75,7 @@ gameAsPicture game = translate (fromIntegral screenWidth * (-0.5))
                                (fromIntegral screenHeight * (-0.5))
                                frame
     where frame = case gameState game of
+        -- Initialized two pictures running (continue put x or o ) or gameOver 
                     Running -> boardAsRunningPicture (gameBoard game)
+                    -- winner is PlayerX or PlayerO or maybe Nothing
                     GameOver winner -> boardAsGameOverPicture winner (gameBoard game)
